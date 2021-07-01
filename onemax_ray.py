@@ -21,7 +21,7 @@ import ray
 from ray_map import ray_deap_map
 
 #ray.init(num_cpus=1) # will use default python map on current process, useful for debugging?
-ray.init(address="example-cluster-ray-head:10001") # will batch out via ActorPool, slower vs above for trivial loads because overhead
+ray.client("example-cluster-ray-head:10001").connect() # will batch out via ActorPool, slower vs above for trivial loads because overhead
 
 '''
 Eval is made arbitrarily more expensive to show difference. Tricky as DeltaPenalty skips evals sometimes.
